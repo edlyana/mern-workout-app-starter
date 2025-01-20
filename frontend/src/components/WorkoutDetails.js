@@ -19,14 +19,22 @@ const WorkoutDetails = ({ workout }) => {
   }
 
   const handleChange = async () => {
+    // e.preventDefault()
+
+    // const workout = {title, load, reps}
+
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/workouts/${workout.id}`, {
-      method: 'DELETE'
+      `${process.env.REACT_APP_API_URL}/api/workouts/${workout._id}`, {
+      method: 'PATCH',
+      // body: JSON.stringify(workout),
+      // headers: {
+      //   'Content-Type' : 'application/json',
+      // }
     })
     const json = await response.json()
 
     if (response.ok) {
-      dispatch({type: 'DELETE_WORKOUT', payload: json})
+      dispatch({type: 'EDIT_WORKOUT', payload: json})
     }
   }
 
@@ -36,7 +44,7 @@ const WorkoutDetails = ({ workout }) => {
         <p><strong>Load (kg): </strong>{workout.load}</p>
         <p><strong>Number of reps: </strong>{workout.reps}</p>
         <p>{formatDistanceToNow(new Date(workout.createdAt), {addSuffix: true})}</p>
-        <span onClick={handleChange}>edit</span>
+        <span className="material-symbols-outlined" onClick={handleChange}>edit</span>
         <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
       </div>
     )
