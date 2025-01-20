@@ -3,16 +3,16 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: #127475;
   --error: #e7195a;
 }
 body {
-  background: #f1f1f1;
+  background: #f6e7d0;
   margin: 0;
   font-family: "Poppins";
 }
 header {
-  background: #fff;
+  background: #127475;
 }
 header .container {
   max-width: 1400px;
@@ -23,7 +23,7 @@ header .container {
   justify-content: space-between;
 }
 header a {
-  color: #333;
+  color: #f6e7d0;
   text-decoration: none;
 }
 .pages{
@@ -31,7 +31,6 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
-
 
 /* homepage */
 .home {
@@ -55,21 +54,19 @@ header a {
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
-  color: #555;
+  color: #562C2C;
 }
 .workout-details span {
   /* position: absolute; */
-  flex-direction: column;
-  flex: 1;
   top: 20px;
   right: 20px;
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
+  padding-left: 5px;
   border-radius: 50%;
-  color: #333;
+  color: #127475;
 }
-
 
 /* new workout form */
 label, input {
@@ -80,14 +77,14 @@ input {
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid #0E9594;
   border-radius: 4px;
   box-sizing: border-box;
 }
 form button {
   background: var(--primary);
   border: 0;
-  color: #fff;
+  color: #FFF7EA;
   padding: 10px;
   font-family: "Poppins";
   border-radius: 4px;
@@ -101,7 +98,6 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
-
 input.error {
   border: 1px solid var(--error);
 }
