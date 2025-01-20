@@ -17,6 +17,7 @@ const WorkoutDetails = ({ workout }) => {
       dispatch({type: 'DELETE_WORKOUT', payload: json})
     }
   }
+  
     return (
       <div className="workout-details">
         <h4>{workout.title}</h4>
