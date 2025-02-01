@@ -38,35 +38,45 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
+
 .workout-details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
+
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
-  color: #562C2C;
+  color: #3e2020;
 }
+
+.editAndDelete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
 .workout-details span {
-  /* position: absolute; */
-  top: 20px;
-  right: 20px;
+  position: relative;
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
-  padding-left: 5px;
   border-radius: 50%;
   color: #127475;
 }
+
 
 /* new workout form */
 label, input {
@@ -127,6 +137,53 @@ form.signup, form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
-  background: #e4e7e4;
+  background: #f1f1f1;
   border-radius: 20px;
+  color:#3e2020
+}
+
+
+/* NEW CSS */
+
+.btnForm:hover{
+  color: #0E9594;
+  background-color: #FFF7EA;
+  transition: 0.3s ease-in-out;
+}
+
+
+.btnWelcomePage {
+  display: flex;
+  gap: 15px; /* Spacing between buttons */
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.btnWelcomePage a {
+  text-decoration: none;
+  background: #127475;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.btnWelcomePage a:hover {
+  background: #0E9594;
+  color: #042a2a;
+  text-decoration: underline;
+}
+
+
+.logoutBtn:hover{
+  background:#3e2020;
+  transition: 0.3s ease-in-out;
+  color: #FFF7EA;
+}
+
+.submitBtnWP:hover{
+  background:#FFF7EA;
+  transition: 0.3s ease-in-out;
+  color: #3e2020;
 }

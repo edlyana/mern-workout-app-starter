@@ -38,28 +38,31 @@ const Home = () => {
   }, [dispatch, user])
 
   return (
-    <div className="home">
+    <div>
       <label style={{fontSize:"20px",color:"#127475"}}>Search Workouts:</label>
-            <input
-                type="text"
-                placeholder="Enter a workout"
-                value={searchName}
-                onChange = {(e) => setSearchName(e.target.value)}
-                style={{
-                    padding: "10px",
-                    fontSize: "16px",
-                    width: "80%",
-                    borderRadius: "5px",
-                    border: "1px solid #127475",
-                }}
-                className="searchBox"
-            />
-      <div className="workouts">
-        {filteredName.map(workout => (
-          <WorkoutDetails workout={workout} key={workout._id} />
-        ))}
+      <input
+        type="text"
+        placeholder="Enter a workout"
+        value={searchName}
+        onChange = {(e) => setSearchName(e.target.value)}
+        style={{
+          padding: "10px",
+          fontSize: "16px",
+          width: "35%",
+          borderRadius: "5px",
+          border: "1px solid #127475",
+        }}
+      />
+      
+      <div className="home">
+        <div className="workouts">
+          {filteredName.map(workout => (
+            <WorkoutDetails workout={workout} key={workout._id} />
+          ))}
+        </div>
+        <WorkoutForm />
       </div>
-      <WorkoutForm />
+      
     </div>
   )
 }

@@ -30,7 +30,7 @@ const Signup = () => {
                 value={password}
             />
 
-            <button disabled={isLoading}>Sign up</button>
+            <button className="submitBtnWP" disabled={isLoading}>Sign up</button>
             {error && <div className="error">{error}</div>}
         </form>
     )

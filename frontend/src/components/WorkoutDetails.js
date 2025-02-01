@@ -60,8 +60,11 @@ const WorkoutDetails = ({ workout }) => {
         <p><strong>Load (kg): </strong>{workout.load}</p>
         <p><strong>Number of reps: </strong>{workout.reps}</p>
         <p>{formatDistanceToNow(new Date(workout.createdAt), {addSuffix: true})}</p>
-        <span className="material-symbols-outlined" onClick={handleChange}>edit</span>
-        <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+
+        <div className="editAndDelete">
+          <span className="material-symbols-outlined" onClick={handleChange}>edit</span>
+          <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+        </div>
       </div>
     )
 }

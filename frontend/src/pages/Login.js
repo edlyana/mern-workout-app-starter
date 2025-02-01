@@ -14,7 +14,7 @@ const Login = () => {
 
     return(
         <form className='login' onSubmit={handleSubmit}>
-            <h3>Login</h3>
+            <h3>Log In</h3>
 
             <label>Email:</label>
             <input
@@ -30,7 +30,7 @@ const Login = () => {
                 value={password}
             />
 
-            <button disabled={isLoading}>Login</button>
+            <button className="submitBtnWP" disabled={isLoading}>Login</button>
             {error && <div className="error">{error}</div>}
         </form>
     )
