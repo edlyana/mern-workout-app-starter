@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import {useWorkoutsContext} from '../hooks/useWorkoutsContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 // components
 import WorkoutDetails from "../components/WorkoutDetails"
@@ -7,6 +8,7 @@ import WorkoutForm from "../components/WorkoutForm"
 
 const Home = () => {
   const {workouts, dispatch} = useWorkoutsContext()
+  const {user} = useAuthContext()
 
   // Search Function
   const [searchName, setSearchName] = useState('')
@@ -16,7 +18,11 @@ const Home = () => {
     const fetchWorkouts = async () => {
       // const response = await fetch(`${process.env.REACT_APP_API_URL}/api/workouts`);
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/workouts`
+        `${process.env.REACT_APP_API_URL}/api/workouts`, {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        }
       );
       const json = await response.json()
 
@@ -25,8 +31,11 @@ const Home = () => {
       }
     }
 
-    fetchWorkouts()
-  }, [dispatch])
+    if (user) {
+      fetchWorkouts()
+    }
+
+  }, [dispatch, user])
 
   return (
     <div className="home">
