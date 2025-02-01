@@ -111,7 +111,7 @@ nav a {
   margin-left: 10px;
 }
 nav button {
-  background: #fff;
+  background: #FFF7EA;
   color: var(--primary);
   border: 2px solid var(--primary);
   padding: 6px 10px;
@@ -126,6 +126,6 @@ form.signup, form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
-  background: #fff;
-  border-radius: 4px;
+  background: #e4e7e4;
+  border-radius: 20px;
 }
