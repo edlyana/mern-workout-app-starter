@@ -1,3 +1,5 @@
+import React, {useState} from 'react'
+
 import {useWorkoutsContext} from '../hooks/useWorkoutsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
@@ -7,6 +9,11 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const WorkoutDetails = ({ workout }) => {
   const {dispatch}= useWorkoutsContext()
   const {user} = useAuthContext()
+
+  const [showModal, setShowModal] = useState(false)
+  const [title, setTitle] = useState(workout.title)
+  const [load, setLoad] = useState(workout.load)
+  const [reps, setReps] = useState(workout.reps)
 
   const handleClick = async () => {
 
@@ -28,29 +35,29 @@ const WorkoutDetails = ({ workout }) => {
     }
   }
 
-  const handleChange = async () => {
-    // if (!user) {
-    //   return
-    // }
-    // e.preventDefault()
+  const handleChange = async (e) => {
+    e.preventDefault()
 
-    // const workout = {title, load, reps}
+    if (!user) {
+      return
+    }
+
+    const updatedWorkout = {title, load, reps}
 
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}/api/workouts/${workout._id}`, {
       method: 'PATCH',
       headers: {
+        'Content-Type' : 'application/json',
         'Authorization': `Bearer ${user.token}`
-      }
-      // body: JSON.stringify(workout),
-      // headers: {
-      //   'Content-Type' : 'application/json',
-      // }
+      },
+      body: JSON.stringify(updatedWorkout) // to send updated data
     })
     const json = await response.json()
 
     if (response.ok) {
       dispatch({type: 'EDIT_WORKOUT', payload: json})
+      setShowModal(false) // to close modal after an update
     }
   }
 
@@ -62,9 +69,30 @@ const WorkoutDetails = ({ workout }) => {
         <p>{formatDistanceToNow(new Date(workout.createdAt), {addSuffix: true})}</p>
 
         <div className="editAndDelete">
-          <span className="material-symbols-outlined" onClick={handleChange}>edit</span>
+          <span className="material-symbols-outlined" onClick={() => setShowModal(true)}>edit</span>
           <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
         </div>
+
+        {showModal && (
+          <div className='modal-overlay'>
+            <div className='modal-content'>
+              <h2>Edit Workout</h2>
+              <form onSubmit={handleChange}>
+                <label>Title:</label>
+                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                
+                <label>Load (kg):</label>
+                <input type="number" value={load} onChange={(e) => setLoad(e.target.value)}/>
+                
+                <label>Reps:</label>
+                <input type="number" value={reps} onChange={(e) => setReps(e.target.value)}/>
+
+                <button type="submit">Save Changes</button>
+                <button type="button" onClick={()=>setShowModal(false)}>Cancel</button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     )
 }
